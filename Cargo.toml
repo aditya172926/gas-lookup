@@ -11,10 +11,17 @@ repository = "https://github.com/varun-doshi/gas-lookup"
 keywords = ["cli", "gas", "ethereum","web3"]
 categories = ["command-line-utilities"]
 
+[lib]
+crate-type = ["cdylib"]
+path = "src/lib.rs"
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [dependencies]
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4.40"
 clap = { version = "4.0", features = ["derive"] }
-tokio = { version = "1.15", features = ["full"] }
+getrandom = { version = "0.2", features = ["js"] }
+tokio = { version = "1.15", features = ["rt", "macros"] }
 ethers={version  ="2.0.11",features = ["abigen","rustls","etherscan"], default-features = false}
 chrono = "0.4.22"
 colored = "2.0.4"
